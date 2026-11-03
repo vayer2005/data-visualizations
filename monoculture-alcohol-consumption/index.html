@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>South Korea: workplace aspirations and alcohol</title>
+  <style>
+    :root {
+      --bg: #10120c;
+      --ink: #f4f1e8;
+      --muted: #c2bdb0;
+      --line: rgba(244, 241, 232, 0.16);
+      --accent: #c5d2b2;
+      --accent2: #e2a84a;
+      --serif: "New York", "Iowan Old Style", Palatino, Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 42em;
+      margin: 0 0 32px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+    }
+    .stat .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .stat .value {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      margin-top: 4px;
+    }
+    figure {
+      margin: 0 0 36px;
+    }
+    figcaption {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin: 48px 0 16px;
+    }
+    p.note {
+      font-size: 14px;
+      color: var(--muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+    }
+    code {
+      font-size: 0.9em;
+      color: var(--accent2);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Workplace aspirations and alcohol in South Korea</h1>
+    <p class="lede">
+      Exploratory pairing of Statistics Korea Social Survey “preferred workplace” shares
+      (ages 13–24, biennial 2011–2023) with OECD sales-based alcohol consumption (ages 15+).
+      Concentration is normalized HHI over ten fixed workplace categories. This is not a causal claim.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="label">Paired years</div>
+        <div class="value">7</div>
+      </div>
+      <div class="stat">
+        <div class="label">Survey waves</div>
+        <div class="value">2011–2023</div>
+      </div>
+      <div class="stat">
+        <div class="label">Pearson r</div>
+        <div class="value">−0.23</div>
+      </div>
+      <div class="stat">
+        <div class="label">Spearman ρ</div>
+        <div class="value">−0.20</div>
+      </div>
+    </div>
+
+    <figure>
+      <img src="output/plots/panel_timeseries.png" alt="Two-panel time series of career concentration and OECD alcohol">
+      <figcaption>
+        Top: normalized workplace-aspiration concentration (0 = even spread, 1 = one category).
+        Bottom: litres of pure alcohol per capita (OECD). Dashed line marks the 1988 OECD series break.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="output/plots/standardized_overlay.png" alt="Standardized overlay of both series on overlap years">
+      <figcaption>
+        Both series z-scored using the seven overlapping survey years only—movement, not units.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="output/plots/scatter_concentration_alcohol.png" alt="Scatterplot of concentration versus alcohol by year">
+      <figcaption>
+        Each point is a Social Survey year labelled; weak negative association over seven points.
+      </figcaption>
+    </figure>
+
+    <h2>Reproduce</h2>
+    <p class="note">
+      Raw inputs live in <code>raw/</code>. Run <code>pip install -r requirements.txt</code>
+      then <code>python analyze.py</code> to refresh <code>output/</code> CSVs and PNGs.
+    </p>
+  </main>
+</body>
+</html>
